@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | QR code component</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+        body{
+            background: hsl(212, 45%, 89%);
+            box-sizing: border-box ;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            height: 100vh;
+        }
+        *{
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .card{
+            background-color: hsl(0, 0%, 100%);
+            width: 300px;
+            padding: 20px;
+            border-radius: 20px;
+
+            box-shadow: 15px 15px 50px -10px rgba(0, 0, 0, 0.205) ;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .card__main{
+            background: url(./images/blob-haikei.svg)  ;
+            opacity: 1;
+            height: 300px;
+            width: 300px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;   
+
+        }
+        .card__header{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;    
+        }
+        .header__color{
+            display: flex;
+            gap: 10px;
+            padding-right: 4px;
+            font-size: 18px;
+            /* width: 50px; */
+            /* overflow-x:scroll; */
+
+        }
+        .header__color h5{
+            color: hsla(219, 15%, 55%, 0.452);
+        }
+        .header__color h5:hover{
+            color: hsla(217, 45%, 22%, 0.616);
+            cursor: pointer;
+        }
+        h3{
+            /* width: 100%; */
+            font-size: 18px;
+            font-weight: 700;
+            color: hsl(217, 45%, 22%);
+            margin-left: 2px;
+ 
+        }
+        #inputUser{ 
+            width: 93%;
+            height: 30px;
+            outline: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 900;
+            padding-left: 10px;
+            border: 3px solid #2c7efa6c;
+            background-color: #3686ff42;
+            color: hsl(217, 45%, 22%);
+        }
+        #inputUser:hover{ 
+            border: 3px solid #2c7efa6c;
+            background-color: #3686ff59;
+        }
+        #inputUser:focus{ 
+            border: 3px solid #2c7efa6c;
+            background-color: #3f8afc5d;
+        }
+        #inputUser::-webkit-input-placeholder{ 
+            color:  hsla(218, 18%, 51%, 0.801);
+            font-size: 16px;
+        }
+        #inputUser::selection{ 
+            color:  hsla(218, 18%, 51%, 0.801);
+
+        }
+
+        .message {
+            color: hsla(219, 15%, 55%, 0.582);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 7px;
+            margin-bottom: 15px;
+            height: 20px;
+
+        }
+        .message__text{
+            color: hsla(219, 15%, 55%, 0.582);
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .message__text a{
+            color: rgba(241, 16, 0, 0.521);
+            cursor: none;
+            
+        }            
+        .message__text a:hover{
+            text-decoration: line-through;
+        }
+        .attribution { 
+    font-size: 1.8vh;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 70vw;
+    position: fixed;
+    bottom: 0.5vh;
+    right:  15%;
+    z-index: 9999;
+    color:hsl(217, 45%, 22%);
+    font-weight: 600;
+    }
+    .attribution a {
+        font-size: 2vh;
+        color:hsla(219, 15%, 55%, 0.801);;
+        text-decoration: none;
+    }
+    .attribution a:hover{
+        color:#2c7efacc;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+    <div class="card__main">
+        <div id="qrcode">
+
+            </div>
+ 
+ 
+    </div>
+    <div class="card__header"> 
+    <h3>  write something :</h3>   
+    <div class="header__color"> 
+
+        <h5 class="QRcolor" id="#0009">#0009</h5>
+        <h5 class="QRcolor" id="#FFF9">#FFF9</h5>
+    </div>
+       
+    
+     
+    </div>
+
+
+    <form  id='#QR__form' action="">
+        <input  name="user" id="inputUser" type="text" placeholder="QR text " value=""/>
+        </form>
+    <div class="message">
+        <p>Scan the QR code</p>
+    </div>
+
+</div>
+<div class="attribution">
+    Challenge by 
+    <lord-icon
+        src="https://cdn.lordicon.com/etllbcfy.json"
+        trigger="hover"
+        style="width:4vh;height:4vh"
+        >
+  
+      </lord-icon>
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+  
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+  <lord-icon
+    src="https://cdn.lordicon.com/dklbhvrt.json"
+    trigger="hover"
+    style="width:4vh;height:4vh;">
+  
+    </lord-icon>
+    <a href="https://github.com/HabbasMounir">mounir habbas</a>.
+  </div>
+
+
+
+
+
+
+
+<script>
+
+//      The code remains just an experiment,
+//      but there are other opportunities to develop it,
+//      such as adding a download and copy button,
+//      but I can't get excited and I can come back to it in the future
+//      if I have the time and any developer can modify it
+
+//I had added some animations, but I deleted the whole code
+
+    let inputUser=document.querySelector("[name='user']");
+    let main__color="#fff9";
+    let qrcode=document.getElementById("qrcode")
+    let qrColor= document.querySelectorAll(".QRcolor");
+    
+    qrColor.forEach((ele,i) => {
+        ele.addEventListener("click",function (){ 
+            qrColor.forEach(element => {
+                element.style.color="hsla(219, 15%, 55%, 0.452)";
+            })
+            ele.style.color="hsla(217, 45%, 22%, 0.616)"
+            main__color=`${ele.id}`
+            let message=document.querySelector(".message")
+
+            i==1
+            ?message.innerHTML=`<p class="message__text">Probably you can't Scan the QR code  
+                <br>   <a>#FFF9 </a> </p> `:
+            message.innerHTML="Scan the QR code"
+
+
+            qrcode.innerHTML="";
+            setTimeout(() => {
+        let inputQR=inputUser.value;
+        qrcode.innerHTML="";
+        new QRCode(qrcode, {
+	            text: `${inputQR}`,
+        	    width: 200,
+	            height: 200,
+	            colorDark : main__color,
+	            colorLight : "#0000",
+        	    correctLevel : QRCode.CorrectLevel.H
+        } );
+        }, 0)
+        })
+    });
+
+
+    document.forms[0].onkeypress= function(e){
+
+ 
+    setTimeout(() => {
+    let inputQR=inputUser.value;
+        qrcode.innerHTML="";
+    
+    new QRCode(qrcode, {
+	        text: `${inputQR}`,
+        	width: 200,
+	        height: 200,
+	        colorDark : main__color,
+	        colorLight : "#0000",
+        	correctLevel : QRCode.CorrectLevel.H
+} );
+        qrcode.title=""; 
+        qrcode.style.cursor="none"; 
+    }, 0)
+    } 
+</script>
+
+</body>
+</html>
