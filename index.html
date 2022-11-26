@@ -23,7 +23,7 @@
         *{
             margin: 0;
             font-family: 'Outfit', sans-serif;
-            user-select: none;
+            /* user-select: none; */
             -webkit-user-drag: none;
         }
         .card{
@@ -31,8 +31,8 @@
             width: 300px;
             padding: 20px;
             border-radius: 20px;
-
-            box-shadow: 15px 15px 50px -10px rgba(0, 0, 0, 0.205) ;
+            /* box-shadow: rgba(0, 0, 0, 0.459) 1px 1px  px 1px; */
+            box-shadow: 1px 1px 10px 5px #00000038;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -151,6 +151,7 @@
     .attribution a:hover{
         color:#2c7efacc;
     }
+
   </style>
 </head>
 <body>
@@ -185,28 +186,19 @@
 </div>
 <div class="attribution">
     Challenge by 
-    <lord-icon
-        src="https://cdn.lordicon.com/etllbcfy.json"
-        trigger="hover"
-        style="width:4vh;height:4vh"
-        >
+    <lord-icon src="https://cdn.lordicon.com/etllbcfy.json" trigger="hover" >
   
-      </lord-icon>
-    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+     </lord-icon>
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+        Frontend Mentor</a>. 
+        Coded by<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
   
         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-  <lord-icon
-    src="https://cdn.lordicon.com/dklbhvrt.json"
-    trigger="hover"
-    style="width:4vh;height:4vh;">
+  <lord-icon src="https://cdn.lordicon.com/dklbhvrt.json" trigger="hover" >
   
     </lord-icon>
     <a href="https://github.com/HabbasMounir">mounir habbas</a>.
   </div>
-
-
-
 
 
 
@@ -258,25 +250,52 @@
     });
 
 
-    document.forms[0].onkeypress= function(e){
+    // document.forms[0].onkeypress= function(e){
 
  
-    setTimeout(() => {
+//     setTimeout(() => {
+//     let inputQR=inputUser.value;
+//         qrcode.innerHTML="";
+    
+//     new QRCode(qrcode, {
+// 	        text: `${inputQR}`,
+//         	width: 200,
+// 	        height: 200,
+// 	        colorDark : main__color,
+// 	        colorLight : "#0000",
+//         	correctLevel : QRCode.CorrectLevel.H
+// } );
+//         qrcode.title=""; 
+//         qrcode.style.cursor="none"; 
+//     }, 0)
+//     } 
+
+
+    setInterval(()=>{
+        let  firstvalue,secondvalue
+        firstvalue = inputUser.value
+        setTimeout(() => {secondvalue=inputUser.value },0)
+  setTimeout(() => {
+if(firstvalue!==secondvalue){
     let inputQR=inputUser.value;
         qrcode.innerHTML="";
-    
-    new QRCode(qrcode, {
-	        text: `${inputQR}`,
-        	width: 200,
-	        height: 200,
-	        colorDark : main__color,
-	        colorLight : "#0000",
-        	correctLevel : QRCode.CorrectLevel.H
-} );
+    new QRCode(qrcode,
+        {
+                text: inputQR,
+                width: 200,
+                height: 200,
+                colorDark : main__color,
+                colorLight : "#0000",
+                correctLevel : QRCode.CorrectLevel.H
+        } 
+    );
         qrcode.title=""; 
         qrcode.style.cursor="none"; 
+}
     }, 0)
-    } 
+    }
+    ,0)
+
 </script>
 
 </body>
